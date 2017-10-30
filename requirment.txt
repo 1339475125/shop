@@ -1,0 +1,4 @@
+sudo pip install django-tinymce
+sudo pip install django-haystack
+sudo pip install whoosh django-haystack jieba
+

@@ -23,7 +23,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'ohdd@qol#)x&)5&h_jq1@e&)5#=f3+37kq0cwv=kq(=f%x#nsx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
+# DEBUG = False
 
 ALLOWED_HOSTS = ['*',]
 
@@ -38,13 +39,13 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tinymce',
+    'haystack',
     'registerLogin',
     'usercenter',
     'goodslist',
     'index',
     'detail',
     'cart',
-    'haystack',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -85,11 +86,11 @@ WSGI_APPLICATION = 'shop.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'shopping',
-        'HOST':'localhost',
-        'PORT':'3306',
+        'NAME': 'shop',
+        'HOST':'127.0.0.1',
+        'PORT':'',
         'USER':'root',
-        'PASSWORD':'mysql',
+        'PASSWORD':'rootroot',
     }
 }
 
@@ -110,14 +111,18 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
+CURRENT_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-STATIC_URL = '/static/'
-MEDIA_ROOT=os.path.join(BASE_DIR,"static")
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-]
-STATIC_ROOT='/var/www/shop/static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join('/data', 'media')
+# MEDIA_ROOT=os.path.join(BASE_DIR,"static")
 STATIC_URL='/static/'
+STATIC_ROOT=os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(CURRENT_PATH, 'static')
+# STATIC_ROOT='/var/www/shop/static/'
+STATICFILES_DIRS = (
+   #  os.path.join(BASE_DIR, 'static'),
+)
 
 
 TINYMCE_DEFAULT_CONFIG = {

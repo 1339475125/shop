@@ -118,7 +118,7 @@ class Migration(migrations.Migration):
                 ('isDelete', models.BooleanField(default=False)),
                 ('orderTime', models.DateTimeField()),
                 ('orderNumber', models.CharField(max_length=20, null=True, blank=True)),
-                ('fare', models.DecimalField(max_digits=7, decimal_places=2)),
+                ('addr', models.IntegerField(null=True, blank=True)),
             ],
             options={
                 'db_table': 'orders',

@@ -16,6 +16,8 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from index import viewSearch
+from django.conf import settings
+from django.conf.urls.static import static
 from haystack.views import SearchView
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
@@ -28,4 +30,8 @@ urlpatterns = [
     url(r'^',include('detail.urls',namespace='detail')),
     url(r'^',include('cart.urls',namespace='cart')),
     url(r'^search/', viewSearch.MySearchView.as_view(), name='search_view'),
+    url(r'^static/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.STATIC_ROOT}),
 ]
+# if settings.DEBUG:
+#     urlpatterns = urlpatterns + static(
+#     settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -139,7 +139,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('uName', models.CharField(max_length=30)),
-                ('uPassword', models.CharField(max_length=20)),
+                ('uPassword', models.CharField(max_length=100)),
                 ('uEmail', models.CharField(max_length=30)),
                 ('uPhoneNumber', models.CharField(max_length=15, null=True)),
                 ('uAddr', models.CharField(max_length=50, null=True, blank=True)),

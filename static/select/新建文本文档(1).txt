@@ -1,0 +1,7 @@
+$("#city").citySelect({
+        url:city.min.js,  
+        prov:"湖南", //省份 
+        city:"长沙", //城市 
+        dist:"岳麓区", //区县 
+        nodata:"none" //当子集无数据时，隐藏select
+}); 

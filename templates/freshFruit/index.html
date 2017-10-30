@@ -6,8 +6,8 @@
 
 
 {%block content%}
-<script type="text/javascript" src="{% static 'js/jquery-ui.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/slide.js' %}"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/slide.js"></script>
 	<div class="navbar_con">
 		<div class="navbar">
 			<h1 class="fl">全部商品分类</h1>
@@ -39,8 +39,8 @@
 			<ul class="points"></ul>
 		</div>
 		<div class="adv fl" >
-			<a href="#" style="width: 240px;height: 135px;"><img src="{% static 'images/adv01.jpg' %}"></a>
-			<a href="#" style="width: 240px;height: 135px;"><img src="{% static 'images/adv02.jpg' %}"></a>
+			<a href="#" style="width: 240px;height: 135px;"><img src="{{ STATIC_URL }}images/adv01.jpg"></a>
+			<a href="#" style="width: 240px;height: 135px;"><img src="{{ STATIC_URL }}images/adv02.jpg"></a>
 		</div>
 	</div>
 
