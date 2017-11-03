@@ -8,72 +8,72 @@
 {%block content%}
 <script type="text/javascript" src="{{ STATIC_URL }}js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="{{ STATIC_URL }}js/slide.js"></script>
-	<div class="navbar_con">
-		<div class="navbar">
-			<h1 class="fl">全部商品分类</h1>
-			<ul class="navlist fl">
-				<li><a href="">首页</a></li>
-				<li class="interval">|</li>
-				<li><a href="">手机生鲜</a></li>
-				<li class="interval">|</li>
-				<li><a href="{%url 'index:choujiang'%}">抽奖</a></li>
-			</ul>
-		</div>
-	</div>
-	<div class="center_con clearfix">
-		<ul class="subnav fl">
-			{% for temp in message %}
-			<li><a href="#model{{temp.sort.id}}" class="{{temp.sort.sortClass}}">{{temp.sort.sortName}}</a></li>
-			{% endfor temp %}
-		</ul>
+    <div class="navbar_con">
+        <div class="navbar">
+            <h1 class="fl">全部商品分类</h1>
+            <ul class="navlist fl">
+                <li><a href="">首页</a></li>
+                <li class="interval">|</li>
+                <li><a href="">手机生鲜</a></li>
+                <li class="interval">|</li>
+                <li><a href="{%url 'index:choujiang'%}">抽奖</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="center_con clearfix">
+        <ul class="subnav fl">
+            {% for temp in message %}
+            <li><a href="#model{{temp.sort.id}}" class="{{temp.sort.sortClass}}">{{temp.sort.sortName}}</a></li>
+            {% endfor temp %}
+        </ul>
 
-		<div class="slide fl">
-			<ul class="slide_pics">
-				<li><img src="{% static 'images/slide.jpg' %}" alt="幻灯片"></li>
-				<li><img src="{% static 'images/slide02.jpg' %}" alt="幻灯片"></li>
-				<li><img src="{% static 'images/slide03.jpg' %}" alt="幻灯片"></li>
-				<li><img src="{% static 'images/slide04.jpg' %}" alt="幻灯片"></li>
-			</ul>
-			<div class="prev"></div>
-			<div class="next"></div>
-			<ul class="points"></ul>
-		</div>
-		<div class="adv fl" >
-			<a href="#" style="width: 240px;height: 135px;"><img src="{{ STATIC_URL }}images/adv01.jpg"></a>
-			<a href="#" style="width: 240px;height: 135px;"><img src="{{ STATIC_URL }}images/adv02.jpg"></a>
-		</div>
-	</div>
+        <div class="slide fl">
+            <ul class="slide_pics">
+                <li><img src="/static/images/slide.jpg" alt="幻灯片"></li>
+                <li><img src="/static/images/slide02.jpg" alt="幻灯片"></li>
+                <li><img src="/static/images/slide03.jpg" alt="幻灯片"></li>
+                <li><img src="/static/images/slide04.jpg" alt="幻灯片"></li>
+            </ul>
+            <div class="prev"></div>
+            <div class="next"></div>
+            <ul class="points"></ul>
+        </div>
+        <div class="adv fl" >
+            <a href="#" style="width: 240px;height: 135px;"><img src="/static/images/adv01.jpg"></a>
+            <a href="#" style="width: 240px;height: 135px;"><img src="/static/images/adv02.jpg"></a>
+        </div>
+    </div>
 
 
 
 {%for i in message %}
 <div class="list_model">
-		<div class="list_title clearfix">
-		
-			<h3 class="fl" id="model{{i.sort.id}}">{{i.sort.sortName}}</h3>
-			<div class="subtitle fl">
-				<span>|</span>
-				
-					{%for ogood in i.goodOtherList%}
-								<a href="/detail/?goodsId={{ogood.id}}">{{ogood.goodsName}}</a>
-					{%endfor%}
-				
-			</div>
-			<a href="{% url 'goodslist:list'%}?sort={{i.sort.id}}" class="goods_more fr" id="fruit_more">查看更多 ></a>
-		</div>
-				<div class="goods_con clearfix">
-			<div class="goods_banner fl"><img src="/static/{{i.sort.sortPic}}"></div>
-			<ul class="goods_list fl">
-					{% for good in i.goodMsgList %}
-				<li>
-					<h4><a href="/detail/?goodsId={{good.id}}">{{ good.goodsName }}</a></h4>
-					<a href="/detail/?goodsId={{good.id}}"><img src="/static/{{good.imgPath}}"></a>
-					<div class="prize">¥ {{ good.goodsPrice }}</div>
-				</li>
-					{% endfor %}
-	
-			</ul>
-		</div>
+        <div class="list_title clearfix">
+        
+            <h3 class="fl" id="model{{i.sort.id}}">{{i.sort.sortName}}</h3>
+            <div class="subtitle fl">
+                <span>|</span>
+                
+                    {%for ogood in i.goodOtherList%}
+                                <a href="/detail/?goodsId={{ogood.id}}">{{ogood.goodsName}}</a>
+                    {%endfor%}
+                
+            </div>
+            <a href="{% url 'goodslist:list'%}?sort={{i.sort.id}}" class="goods_more fr" id="fruit_more">查看更多 ></a>
+        </div>
+                <div class="goods_con clearfix">
+            <div class="goods_banner fl"><img src="/static/uploads/{{i.sort.sortPic}}"></div>
+            <ul class="goods_list fl">
+                    {% for good in i.goodMsgList %}
+                <li>
+                    <h4><a href="/detail/?goodsId={{good.id}}">{{ good.goodsName }}</a></h4>
+                    <a href="/detail/?goodsId={{good.id}}"><img src="/static/uploads/{{good.imgPath}}"></a>
+                    <div class="prize">¥ {{ good.goodsPrice }}</div>
+                </li>
+                    {% endfor %}
+    
+            </ul>
+        </div>
 {%endfor%}
 
 

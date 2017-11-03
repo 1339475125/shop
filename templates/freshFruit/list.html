@@ -16,7 +16,7 @@
 				<ul>
 				{% for i in goodslist.newgoodslist%}
 					<li>
-						<a href="/detail/?goodsId={{i.id}}"><img src="{% static i.imgPath %}"></a>
+						<a href="/detail/?goodsId={{i.id}}"><img src="/static/uploads/{{i.imgPath }}"></a>
 						<h4><a href="#">{{i.goodsName}}</a></h4>
 						<div class="prize">￥{{i.goodsPrice}}</div>
 					</li>
@@ -36,7 +36,7 @@
 			<ul class="goods_type_list clearfix">
 			{% for i in goodslist.orderlist%}
 				<li>
-					<a href="/detail/?goodsId={{i.id}}"><img src="{% static i.imgPath %}"></a>
+					<a href="/detail/?goodsId={{i.id}}"><img src="/static/uploads/{{ i.imgPath }}"></a>
 					<h4><a href="/detail/?goodsId={{i.id}}">{{i.goodsName}}</a></h4>
 					<div class="operate">
 						<span class="prize">￥{{i.goodsPrice}}</span>

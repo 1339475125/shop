@@ -28,7 +28,7 @@
 	
 
 	<div class="goods_detail_con clearfix">
-		<div class="goods_detail_pic fl"><img src="/static/{{good.imgPath}}"></div>
+		<div class="goods_detail_pic fl"><img src="/static/uploads/{{good.imgPath}}"></div>
 		
 		<div class="goods_detail_list fr">
 			<h3>{{good.goodsName}}</h3>
@@ -60,7 +60,7 @@
 				<ul>
 					{%for i in newgoodslist %}
 					<li>
-						<a href="/detail/?goodsId={{i.id}}"><img src="{% static i.imgPath %}"></a>
+						<a href="/detail/?goodsId={{i.id}}"><img src="/static/uploads/{{ i.imgPath }}"></a>
 						<h4><a href="#">{{i.goodsName}}</a></h4>
 						<div class="prize">￥{{i.goodsPrice}}</div>
 					</li>

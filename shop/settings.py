@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 # coding=utf-8
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import logging
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -26,7 +27,7 @@ SECRET_KEY = 'ohdd@qol#)x&)5&h_jq1@e&)5#=f3+37kq0cwv=kq(=f%x#nsx'
 DEBUG = True
 # DEBUG = False
 
-ALLOWED_HOSTS = ['*',]
+ALLOWED_HOSTS = ['*', ]
 
 
 # Application definition
@@ -64,7 +65,7 @@ ROOT_URLCONF = 'shop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -87,10 +88,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'shop',
-        'HOST':'127.0.0.1',
-        'PORT':'',
-        'USER':'root',
-        'PASSWORD':'rootroot',
+        'HOST': '127.0.0.1',
+        'PORT': '',
+        'USER': 'root',
+        'PASSWORD': 'rootroot',
     }
 }
 
@@ -116,8 +117,8 @@ CURRENT_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join('/data', 'media')
 # MEDIA_ROOT=os.path.join(BASE_DIR,"static")
-STATIC_URL='/static/'
-STATIC_ROOT=os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # STATIC_ROOT = os.path.join(CURRENT_PATH, 'static')
 # STATIC_ROOT='/var/www/shop/static/'
 STATICFILES_DIRS = (
@@ -140,3 +141,56 @@ HAYSTACK_CONNECTIONS = {
 
 
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
+
+# ######################logging################
+
+
+def makedirs(dirpath):
+    if not os.path.exists(dirpath):
+        os.makedirs(dirpath)
+
+
+LOG_FORMATTER = '[%(asctime)s] %(levelname)-8s %(pathname)s ' \
+                '%(funcName)s %(lineno)d %(process)d %(thread)d ' \
+                '%(threadName)s: %(message)s'
+LOG_LEVEL = logging.DEBUG
+LOG_PATH = '/data/log/shop'
+makedirs(LOG_PATH)
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': True,
+    'formatters': {
+        'verbose': {
+            'format': LOG_FORMATTER
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler'
+        },
+        'console': {
+            'level': LOG_LEVEL,
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+        },
+        'ui': {
+            'level': LOG_LEVEL,
+            'class': 'logging.handlers.RotatingFileHandler',
+            'formatter': 'verbose',
+            'filename': os.path.join(LOG_PATH, 'shop.log'),
+            'maxBytes': 10485760,
+            'backupCount': 5,
+        },
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['ui', 'console'],
+            'level': 'INFO',
+        },
+    }
+  }

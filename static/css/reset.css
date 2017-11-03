@@ -15,7 +15,16 @@ a{text-decoration:none;}
 
 
 /* 去掉加链接时产生的框线 */
-img{border:0;}
+img{
+border:0;
+height:100%;
+width:100%;
+}
+.yzm_check img{
+border:0;
+height:100%;
+width:30%;
+}
 
 /* 清除浮动 */
 .clearfix:before,.clearfix:after{content:"";display:table}
