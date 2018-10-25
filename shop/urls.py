@@ -23,14 +23,14 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^tinymce/', include('tinymce.urls')),
     # url(r'^search/', include('haystack.urls')),
-    url(r'^',include('registerLogin.urls',namespace='registerLogin')),
-    url(r'^',include('usercenter.urls',namespace='usercenter')),
-    url(r'^',include('goodslist.urls',namespace='goodslist')), 
-    url(r'^',include('index.urls',namespace='index')),
-    url(r'^',include('detail.urls',namespace='detail')),
-    url(r'^',include('cart.urls',namespace='cart')),
+    url(r'^', include('registerLogin.urls', namespace='registerLogin')),
+    url(r'^', include('usercenter.urls', namespace='usercenter')),
+    url(r'^', include('goodslist.urls', namespace='goodslist')),
+    url(r'^', include('index.urls', namespace='index')),
+    url(r'^', include('detail.urls', namespace='detail')),
+    url(r'^', include('cart.urls', namespace='cart')),
     url(r'^search/', viewSearch.MySearchView.as_view(), name='search_view'),
-    url(r'^static/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.STATIC_ROOT}),
+    url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
 ]
 # if settings.DEBUG:
 #     urlpatterns = urlpatterns + static(

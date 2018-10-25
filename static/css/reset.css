@@ -25,7 +25,6 @@ border:0;
 height:100%;
 width:30%;
 }
-
 /* 清除浮动 */
 .clearfix:before,.clearfix:after{content:"";display:table}
 .clearfix:after{clear:both;}

@@ -4,45 +4,47 @@
 
 {%block menu%}
 <div class="search_bar clearfix">
-		<a href="{% url 'index:indexPage' %}" class="logo fl"><img src="{% static 'images/logo.png' %}"></a>
-		<div class="search_con fl">
-			<form action="/search/" target="_blank">
-				<input type="text" class="input_text fl" name="q" placeholder="搜索商品">
-				<input type="submit" class="input_btn fr" name="" value="搜索">
-			</form>
-		</div>
-		<div class="guest_cart fr">
-				<i id="end"></i>
+        <a href="{% url 'index:indexPage' %}" class="logo fl"><img src="{% static 'images/logo.png' %}"></a>
+        <div class="search_con fl" style='position: relative'>
+            <form action="/search/" target="_blank">
+                <input type="text" class="input_text fl" name="q" placeholder="搜索商品">
+                <input type="submit" class="input_btn fr" name="" value="搜索">
+                <!--<input name="" type="button"   style=" width:38px; height:38px;  border:0;position:absolute; left:620px; background:url({% static 'images/logo.png' %}) no-repeat right top" /> -->
+                <a href="{%url 'index:voice_search'%}"><img src="{% static 'images/logo.png' %}" style=" width:38px; height:38px; border:0; position:absolute; left:620px;" /></a>
+            </form>
+        </div>
+        <div class="guest_cart fr">
+                <i id="end"></i>
 
-			<a href="{% url 'cart:cart'%}" class="cart_name fl">我的购物车</a>
-			<div class="goods_count fl" id="show_count">{{number}}</div>
-		</div>
-	</div>
+            <a href="{% url 'cart:cart'%}" class="cart_name fl">我的购物车</a>
+            <div class="goods_count fl" id="show_count">{{number}}</div>
+        </div>
+    </div>
 
-	{%block navlist%}
-	<div class="navbar_con">
-		<div class="navbar clearfix">
-			<div class="subnav_con fl">
-				<h1>全部商品分类</h1>	
-				<span></span>			
-				<ul class="subnav">
+    {%block navlist%}
+    <div class="navbar_con">
+        <div class="navbar clearfix">
+            <div class="subnav_con fl">
+                <h1>全部商品分类</h1>   
+                <span></span>           
+                <ul class="subnav">
 
 
-			{% for temp in SortsMsg %}
-			<li><a href="{% url 'goodslist:list'%}?order=id&&sort={{temp.id}}" class="{{temp.sortClass}}">{{temp.sortName}}</a></li>
-			{% endfor temp %}
+            {% for temp in SortsMsg %}
+            <li><a href="{% url 'goodslist:list'%}?order=id&&sort={{temp.id}}" class="{{temp.sortClass}}">{{temp.sortName}}</a></li>
+            {% endfor temp %}
 
-				</ul>
-			</div>
-			<ul class="navlist fl">
-				<li><a href="">首页</a></li>
-				<li class="interval">|</li>
-				<li><a href="">手机生鲜</a></li>
-				<li class="interval">|</li>
-				<li><a href="">抽奖</a></li>
-			</ul>
-		</div>
-	</div>
-	{%endblock%}
+                </ul>
+            </div>
+            <ul class="navlist fl">
+                <li><a href="">首页</a></li>
+                <li class="interval">|</li>
+                <li><a href="">手机生鲜</a></li>
+                <li class="interval">|</li>
+                <li><a href="">抽奖</a></li>
+            </ul>
+        </div>
+    </div>
+    {%endblock%}
 {%endblock%}
 

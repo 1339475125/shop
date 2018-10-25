@@ -95,8 +95,8 @@ def place_hander(request,dic):
     goodscount=request.POST.get('goodscount')
     goodsId= request.POST.get('goodsId')  #如果是立即购买的获取物品id
     cartIdList= request.POST.getlist('cartId') #如果是购物车结算的的获取购物车id
-
     orders=Orders()
+    print addr
     orders.orderTime=datetime.now()
     orders.orderNumber=str(int(time.time()))
     orders.userOrder_id=dic['user'].id
@@ -114,6 +114,3 @@ def place_hander(request,dic):
         goods=Goods.objects.get(id=int(goodsId))
         orders.orderdetail_set.create(goodsName=goods.goodsName,goodsPrice=goods.goodsPrice,buyCount=int(goodscount),good_id_id=goods.id)
     return HttpResponseRedirect(reverse('usercenter:user_center_order'))
-
-            
-
